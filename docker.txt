@@ -1,2 +1,4 @@
-docker build -t geek-developer-server-docker .
+docker build -t --no-cache geek-developer-server-docker .
 docker run -i -t geek-developer-server-docker
+
+docker-compose up -d --force-recreate

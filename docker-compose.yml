@@ -4,7 +4,7 @@ services:
    image: rethinkdb
    ports:
      - "28015:28015"
-     - "8080:8080"
+     - "8083:8080"
  web:
    build: .
    environment:
