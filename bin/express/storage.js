@@ -8,7 +8,10 @@ var Storage = (function () {
             secretAccessKey: process.env.awssecretkey
         });
         //Keys
-        console.log(process.env.awskey, process.env.awssecretkey);
+        try {
+            console.log(process.env.awskey, process.env.awssecretkey);
+        }
+        catch (e) { }
     }
     Storage.prototype.saveFile = function (file) {
         var promise = new Promise(function (resolve, reject) {

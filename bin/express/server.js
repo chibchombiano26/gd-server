@@ -12,9 +12,9 @@ var expressServer = (function () {
             var app = express();
             var _storage = new storage_1.Storage();
             app.use(express.static('./'));
-            app.use(function (req, res, next) {                
-                res.setHeader('Access-Control-Allow-Origin', process.env.origin);
-                res.setHeader('Access-Control-Allow-Origin', process.env.origin2);
+            app.use(function (req, res, next) {
+                res.setHeader('Access-Control-Allow-Origin', process.env.origin || "*");
+                res.setHeader('Access-Control-Allow-Origin', process.env.origin || "*");
                 res.setHeader('Access-Control-Allow-Methods', 'POST');
                 res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
                 res.setHeader('Access-Control-Allow-Credentials', 'true');

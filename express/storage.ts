@@ -10,7 +10,10 @@ export class Storage {
         });
 
         //Keys
+        try{
         console.log(process.env.awskey, process.env.awssecretkey);
+        }
+        catch(e){}
     }
 
     saveFile(file):Promise<any> {
