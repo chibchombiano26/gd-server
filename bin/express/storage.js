@@ -3,17 +3,13 @@ var AWS = require('aws-sdk');
 var fs = require("fs");
 var Storage = (function () {
     function Storage() {
+    }
+    Storage.prototype.saveFile = function (file) {
         AWS.config.update({
             accessKeyId: process.env.awskey,
             secretAccessKey: process.env.awssecretkey
         });
-        //Keys
-        try {
-            console.log(process.env.awskey, process.env.awssecretkey);
-        }
-        catch (e) { }
-    }
-    Storage.prototype.saveFile = function (file) {
+        console.log(AWS);
         var promise = new Promise(function (resolve, reject) {
             var s3 = new AWS.S3();
             s3.upload({

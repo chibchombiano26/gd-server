@@ -4,19 +4,18 @@ var fs = require("fs");
 export class Storage {
 
     constructor() {
+                
+    }
+
+    saveFile(file):Promise<any> {
+
         AWS.config.update({
             accessKeyId: process.env.awskey,
             secretAccessKey: process.env.awssecretkey
         });
 
-        //Keys
-        try{
-        console.log(process.env.awskey, process.env.awssecretkey);
-        }
-        catch(e){}
-    }
+        console.log(AWS);
 
-    saveFile(file):Promise<any> {
         let promise = new Promise((resolve, reject) => {
             const s3 = new AWS.S3();
             s3.upload({
