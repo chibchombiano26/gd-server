@@ -8,6 +8,9 @@ export class Storage {
             accessKeyId: process.env.awskey,
             secretAccessKey: process.env.awssecretkey
         });
+
+        //Keys
+        console.log(process.env.awskey, process.env.awssecretkey);
     }
 
     saveFile(file):Promise<any> {
@@ -19,6 +22,12 @@ export class Storage {
                 ACL: "public-read",
                 Body: fs.createReadStream(file.path)
             }, function(err, output) {
+
+                if(err){
+                    console.log(err);
+                    throw(err);
+                }
+
                 console.log("Finished uploading:", output.Location);
                 resolve(output.Location);
             });

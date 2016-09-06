@@ -7,6 +7,8 @@ var Storage = (function () {
             accessKeyId: process.env.awskey,
             secretAccessKey: process.env.awssecretkey
         });
+        //Keys
+        console.log(process.env.awskey, process.env.awssecretkey);
     }
     Storage.prototype.saveFile = function (file) {
         var promise = new Promise(function (resolve, reject) {
@@ -17,6 +19,10 @@ var Storage = (function () {
                 ACL: "public-read",
                 Body: fs.createReadStream(file.path)
             }, function (err, output) {
+                if (err) {
+                    console.log(err);
+                    throw (err);
+                }
                 console.log("Finished uploading:", output.Location);
                 resolve(output.Location);
             });
